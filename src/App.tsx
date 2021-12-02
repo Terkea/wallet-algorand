@@ -1,10 +1,11 @@
 import React from 'react';
 import Background from './containers/Background'
+import Navbar from "./components/Navbar";
 
 const App = () => {
     return (
         <Background>
-            <div className='w-full h-full'><p>test</p></div>
+            <Navbar/>
         </Background>
     );
 }
