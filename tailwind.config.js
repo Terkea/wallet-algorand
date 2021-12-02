@@ -18,6 +18,9 @@ module.exports = {
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
+			algorand: '#d269a7',
+			algorandHover: '#6f0069',
+			algorandBorder: '#741249',
 
 			black: colors.black,
 			white: colors.white,
