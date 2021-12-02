@@ -1,21 +1,33 @@
 import React, {FC, ReactNode} from "react";
-import axios from 'axios'
+import {generateWallet} from "../api/tatum";
 
 
 type Props = { children: ReactNode }
 
-
-const generateWallet = () => {
-    axios({
-        method: 'get',
-        'url': 'https://api-eu1.tatum.io/v3/bitcoin/wallet',
-        headers: {'x-api-key': process.env.REACT_APP_TATUM_KEY}
-    })
+const CreateWallet = () => {
+    return (
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid asperiores consequuntur culpa
+            dicta doloremque error eum exercitationem, facere fugiat impedit nostrum obcaecati odio omnis,
+            perferendis sint suscipit? Commodi, laborum.</p>
+    )
 }
 
-const Container: FC<Props> = ({children}) => {
-    const [PK, setPK] = React.useState('')
-    const [PN, setPN] = React.useState('')
+
+const Container: FC<Props> = () => {
+    const [container, setContainer] = React.useState(<CreateWallet/>);
+
+    React.useEffect(() => {
+
+        fetchNewWallet()
+
+    }, [])
+
+
+    const fetchNewWallet = async () => {
+        const wallet = await generateWallet()
+        console.log(wallet)
+    }
+
 
     return (
         <div className='flex flex-col bg-red-500 w-80 md:w-1/3 mt-20 md:mt-48'>
@@ -25,8 +37,7 @@ const Container: FC<Props> = ({children}) => {
                 <button className='text-xl text-white cursor-pointer'>Restore wallet</button>
             </div>
             <div className='flex flex-col bg-red-200 h-1/2 p-10'>
-                <p>PK: {PK}</p>
-                <p>PN: {PN}</p>
+                {container}
             </div>
         </div>
     )
