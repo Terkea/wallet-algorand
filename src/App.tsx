@@ -1,10 +1,11 @@
 import React from 'react';
+import Background from './containers/Background'
 
-function App() {
+const App = () => {
     return (
-        <div className="">
-
-        </div>
+        <Background>
+            <div className='w-full h-full'><p>test</p></div>
+        </Background>
     );
 }
 
